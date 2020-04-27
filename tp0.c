@@ -62,7 +62,7 @@ int main(void)
 	int id;
 	recv(conexion, &id, sizeof(int), MSG_WAITALL);
 
-	puts(id);
+	printf("%d", id);
 	//loguear mensaje recibido
 	//log_info(logger,mensaje);
 
