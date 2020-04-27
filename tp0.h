@@ -16,6 +16,8 @@
 #include<readline/readline.h>
 
 #include "utils.h"
+#include "protocol.h"
+#include "interface.h"
 
 
 t_log* iniciar_logger(void);

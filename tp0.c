@@ -34,20 +34,41 @@ int main(void)
 	log_info(logger, "IP: %s", ip);
 	log_info(logger, "PUERTO: %s", puerto);
 
+
 	//crear conexion
 	conexion = crear_conexion(ip, puerto);
 
 	//enviar mensaje
-	enviar_mensaje("how you doing?", conexion);
+	New* new_pokemon = malloc(sizeof(New));
+	Pokemon* pokemon = malloc(sizeof(Pokemon));
+	Name* name = malloc(sizeof(Name));
+	char* pika = malloc(8);
+	pika = "pikachu";
+	name->value = pika;
+	name->size = 8;
+	pokemon->name = name;
+	t_list* coordinates = list_create();
+	Coordinate* coor = malloc(sizeof(Coordinate));
+	coor->pos_x = 1;
+	coor->pos_y = 3;
+	list_add(coordinates, coor);
+
+	pokemon->coordinates = coordinates;
+	new_pokemon->pokemon = pokemon;
+	new_pokemon->quantity = 2;
+	send_new(new_pokemon, conexion);
 
 	//recibir mensaje
-	char *mensaje = recibir_mensaje(conexion);
+	int id;
+	recv(conexion, &id, sizeof(int), MSG_WAITALL);
 
+	puts(id);
 	//loguear mensaje recibido
-	log_info(logger, mensaje);
+	//log_info(logger,mensaje);
 
 	//libero mensaje
 	//free(mensaje);
+
 
 	terminar_programa(conexion, logger, config);
 }
