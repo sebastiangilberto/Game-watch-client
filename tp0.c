@@ -39,30 +39,21 @@ int main(void)
 	conexion = crear_conexion(ip, puerto);
 
 	//enviar mensaje
-	New* new_pokemon = malloc(sizeof(New));
-	Pokemon* pokemon = malloc(sizeof(Pokemon));
+	Get* get_pokemon = malloc(sizeof(Get));
 	Name* name = malloc(sizeof(Name));
 	char* pika = malloc(8);
 	pika = "pikachu";
 	name->value = pika;
 	name->size = 8;
-	pokemon->name = name;
-	t_list* coordinates = list_create();
-	Coordinate* coor = malloc(sizeof(Coordinate));
-	coor->pos_x = 1;
-	coor->pos_y = 3;
-	list_add(coordinates, coor);
 
-	pokemon->coordinates = coordinates;
-	new_pokemon->pokemon = pokemon;
-	new_pokemon->quantity = 2;
-	send_new(new_pokemon, conexion);
+	get_pokemon->name = name;
+	send_get(get_pokemon, conexion);
 
 	//recibir mensaje
 	int id;
 	recv(conexion, &id, sizeof(int), MSG_WAITALL);
 
-	printf("%d", id);
+	printf("%d\n", id);
 	//loguear mensaje recibido
 	//log_info(logger,mensaje);
 
