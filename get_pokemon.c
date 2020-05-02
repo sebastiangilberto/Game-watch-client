@@ -28,7 +28,7 @@ void send_get(Get* get_pokemon, int socket) {
 	send(socket, serialized, bytes, 0);
 
 	free(serialized);
-	//free_get(get_pokemon);
+	free_get(get_pokemon);
 }
 
 Get* recv_get(int socket) {

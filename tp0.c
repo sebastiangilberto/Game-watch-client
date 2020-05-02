@@ -42,7 +42,7 @@ int main(void)
 	Get* get_pokemon = malloc(sizeof(Get));
 	Name* name = malloc(sizeof(Name));
 	char* pika = malloc(8);
-	pika = "pikachu";
+	strcpy(pika, "pikachu");
 	name->value = pika;
 	name->size = 8;
 
