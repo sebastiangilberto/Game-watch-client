@@ -11,17 +11,13 @@ Pokemon* recv_pokemon(int socket_e, bool multiple_coordinates) {
 }
 
 void free_pokemon(Pokemon* pokemon) {
-	puts("entre liberar poke");
 	free_name(pokemon->name);
 	//list_destroy(pokemon->coordinates);
 	free(pokemon);
 }
 
 int calculate_pokemon_bytes(Pokemon* pokemon) {
-	int a = sizeof(uint32_t)*4;
-	char* name = pokemon->name->value;
-	int b = strlen(name) +1;
-	return sizeof(uint32_t) * 4 + strlen(pokemon->name->value) + 1;
+	return sizeof(Operation) + sizeof(uint32_t) + pokemon->coordinates->elements_count * sizeof(uint32_t) * 2 + strlen(pokemon->name->value) + 1;
 }
 
 void* serialize_pokemon(Pokemon* pokemon, Operation operation, int bytes) {
