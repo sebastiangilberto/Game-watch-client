@@ -11,7 +11,6 @@ Pokemon* recv_pokemon(int socket_e, bool multiple_coordinates) {
 }
 
 void free_pokemon(Pokemon* pokemon) {
-	puts("entre liberar poke");
 	free_name(pokemon->name);
 	//list_destroy(pokemon->coordinates);
 	free(pokemon);

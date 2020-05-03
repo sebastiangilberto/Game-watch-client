@@ -45,7 +45,6 @@ t_list* recv_coordinates(int socket, bool multiple_coordinates) {
 }
 
 void free_name(Name* name) {
-	puts("entre liberar name");
 	free(name->value);
 	free(name);
 }
